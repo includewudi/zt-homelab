@@ -51,7 +51,7 @@ The script prints your network ID, moon endpoint and admin panel URL when done.
 **Desktop** (has ZeroTier installed):
 
 ```bash
-sudo zerotier-cli orbit <moon-id> <moon-id>   # e.g. 92afc1cf00 92afc1cf00
+sudo zerotier-cli orbit <moon-id> <moon-id>   # e.g. 0123456789 0123456789
 sudo zerotier-cli join <network-id>
 # then authorize in web panel
 ```

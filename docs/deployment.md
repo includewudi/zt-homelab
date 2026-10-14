@@ -29,8 +29,8 @@ NWID="${CTRL}e5a7c9"   # any 6 hex chars
 docker exec zt-controller sh -c "cat > /var/lib/zerotier-one/controller.d/network/${NWID}.json" <<JSON
 {"id":"$NWID","nwid":"$NWID","objtype":"network","name":"homelab","private":true,
  "enableBroadcast":true,"mtu":1300,"v4AssignMode":{"zt":true},
- "ipAssignmentPools":[{"network":"10.222.0.0/24","start":"10.222.0.10","end":"10.222.0.100"}],
- "routes":[{"target":"10.222.0.0/24","via":null}],
+ "ipAssignmentPools":[{"network":"172.22.0.0/24","start":"172.22.0.10","end":"172.22.0.100"}],
+ "routes":[{"target":"172.22.0.0/24","via":null}],
  "rules":[{"type":"ACTION_ACCEPT"}],
  "creationTime":1791000000000,"lastModified":1791000000000}
 JSON
