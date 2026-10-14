@@ -1,0 +1,5 @@
+zt-homelab is a multi-licensed composite:
+
+- app/      → GPL-2.0 (see app/LICENSE, inherited from kaaass/ZerotierFix)
+- server/   → MIT  (see server/LICENSE)
+- docs/     → CC-BY-4.0
