@@ -15,9 +15,14 @@ Probe from outside: `echo t | nc -u -w1 <server-ip> <port>` while tcpdump-ing on
 **Fix**: set network `mtu: 1300` and reconnect clients.
 **Mnemonic**: *ping works + web dead = check MTU first.*
 
-## 3. Controller cannot be a planet root
+## 3. Never put the controller into a client-side planet FILE
 
-The 1.14.2 client will not send join requests to a peer whose role is PLANET. Keep the controller as LEAF; the moon introduces it. (We built a 3-root planet to "solve" this once — the join silently went nowhere.)
+Subtle but critical distinction, verified by experiment:
+
+- ✅ **Controller running on the same box as the moon/planet root** — works. The client connects to the box as a root server, and the join request goes through fine. This is exactly the one-box deployment.
+- ❌ **Writing the controller's identity into a planet file that you distribute to clients** — dead. The 1.14.2 client treats peers defined in its planet file as PLANET-role and refuses to send join requests to them. Joins silently go nowhere.
+
+In short: the same box can be root + controller; the controller just must not appear as a root *in any client's planet file*. If your planet file only contains your pure-root moon identity, you're safe.
 
 ## 4. Hand-written member files don't authorize
 

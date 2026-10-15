@@ -87,6 +87,7 @@ Keep the controller OUT of any custom planet file — clients refuse to join net
 
 ## Docs
 
+- [AI Deployment Guide](docs/AI-DEPLOY.md) — **feed this to your AI assistant** to deploy for you
 - [Architecture](docs/architecture.md) — why one box is enough
 - [Deployment](docs/deployment.md) — step by step with details
 - [Troubleshooting](docs/troubleshooting.md) — the 8 pitfalls above, expanded
