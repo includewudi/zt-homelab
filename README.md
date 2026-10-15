@@ -59,7 +59,23 @@ sudo zerotier-cli join <network-id>
 **Android**: install the `app/` build (ZerotierFix v5) —
 import the `.moon` file via menu → Orbit → ➕ → Import from file; then add the network.
 
-**Restricted networks** (cellular / hotel WiFi): enable "Custom Planet" in ZerotierFix settings and import the same `.moon` file — all root traffic goes through your server.
+**Restricted networks** (cellular / hotel WiFi) — swap the planet:
+
+The same `.moon` file works as a custom planet, thanks to our client patch (accepts the moon header). One file, two roles:
+
+| Mode | How | Roots in use | When |
+|---|---|---|---|
+| **Moon** (default) | import via Orbit | official ×4 + yours | normal networks |
+| **Custom Planet** | ZerotierFix → Settings → Planet | **only yours** | official roots unreachable/throttled |
+
+Desktop planet swap (macOS/Linux):
+
+```bash
+sudo cp your.moon "/Library/Application Support/ZeroTier/One/planet"   # or /var/lib/zerotier-one/planet
+sudo launchctl kickstart -k system/com.zerotier.one                    # or: systemctl restart zerotier-one
+```
+
+Keep the controller OUT of any custom planet file — clients refuse to join networks whose controller is a PLANET-role peer (pitfall #3).
 
 ## Hard-won lessons (see docs/troubleshooting.md)
 
